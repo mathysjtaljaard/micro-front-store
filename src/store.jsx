@@ -1,13 +1,13 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 
-const initialState = {count: 0}
+const initialState = { count: 0 }
 
 function reducer(state, action) {
     switch (action.type) {
         case "increment":
-            return {count: state.count +1};
-        case "decrement" :
-            return {count:state.count -1};
+            return { count: state.count + 1 };
+        case "decrement":
+            return { count: state.count - 1 };
         default:
             throw new Error();
     }
@@ -15,9 +15,9 @@ function reducer(state, action) {
 
 const AppContext = React.createContext();
 
-export const StoreProvider = ({children}) => {
+export const StoreProvider = ({ children }) => {
     const value = React.useReducer(reducer, initialState);
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }
 
-export const useStore = () => {return useContext(AppContext)}
+export const useStore = () => { return useContext(AppContext) }
